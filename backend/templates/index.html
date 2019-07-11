@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SmartSketch | Turn Sketches into Photorealistic Images</title>
+    <title>Neural Paint</title>
 
     <!-- Bootstrap core CSS -->
     <link
@@ -38,47 +38,6 @@
       }
     </style>
 
-    <nav class="navbar navbar-expand-lg navbar-dark static-top dark-background">
-      <div class="container">
-        <a class="navbar-brand rubik branding" href="#">Smart Sketch </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <!-- TODO -->
-              <a class="nav-link rubik" data-target="#GuideModal">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link rubik"
-                data-toggle="modal"
-                data-target="#GuideModal"
-                >Guide</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link rubik"
-                data-toggle="modal"
-                data-target="#ContactModal"
-                >Contact</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
     <!-- Page Content -->
     <div class="content">
       <div class="container">
@@ -92,62 +51,18 @@
               <div class="extra">
                 <h4 class="rubik">Upload</h4>
                 <a id="uploadimage" class="btn btn-warning">Convert to photo</a>
+                <a id="resetimage" class="btn btn-warning">Reset Canvas</a>
               </div>
             </div>
           </div>
           <div class="col" id="container_col"><div id="zbeubeu"></div></div>
+          <!--
           <div class="col">
             <img class="image" src="" height="100%" width="100%" id="image" />
           </div>
+        -->
         </div>
         <p class="tips rubik"></p>
-      </div>
-    </div>
-    <!-- Footer -->
-    <footer class="page-footer font-small blue">
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">
-        Demo for the NVIDIA app is
-        <a href="https://www.youtube.com/watch?v=NZBN9jRJ-FE">here</a>,
-        functinality is quite similar.
-        <i
-          >GauGAN and SPADE code used courtesy of NVIDIA. Original source code
-          can be found <a href="https://github.com/NVlabs/SPADE/">here</a> with
-          the paper <a href="https://arxiv.org/abs/1903.07291">here</a>. Our
-          repo can be found
-          <a href="https://github.com/noyoshi/smart-sketch">here!</a></i
-        >
-      </div>
-      <!-- Copyright -->
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal fade" id="GuideModal" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Guide</h5>
-            <button type="button" class="close" data-dismiss="modal">
-              &times;
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>
-              This is a web interface that converts human sketches to
-              photorealistic images.
-            </p>
-            <p>
-              Use the drawing pad on the left to draw, then click "Convert to
-              photo" to see magic happen! 😊
-            </p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close
-            </button>
-          </div>
-        </div>
       </div>
     </div>
 

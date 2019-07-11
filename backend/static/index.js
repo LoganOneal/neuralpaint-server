@@ -247,6 +247,14 @@ document.getElementById("uploadimage").addEventListener(
   },
   false
 );
+
+document.getElementById("resetimage").addEventListener(
+  "click",
+  function() {
+    resetImage();
+  },
+  false
+);
 // document.getElementById("eraser").addEventListener("click", eraser);
 // document.getElementById("clear").addEventListener("click", createCanvas);
 
@@ -296,7 +304,9 @@ function redraw() {
 //   link.href = document.getElementById(canvas).toDataURL();
 //   link.download = filename;
 // }
-
+function resetImage() {
+  myBoard.resetBackground();
+}
 // UPLOAD CANVAS
 
 function upload(canvas) {
@@ -304,9 +314,9 @@ function upload(canvas) {
   // var dataURL = document.getElementById(canvas).toDataURL("image/png");
   var dataURL = myBoard.getImg();
   console.log(dataURL);
-  let img = document.getElementById("image");
-  img.src = "/img/loading.gif"; // TODO fix this to use a better gif
-
+  //let img = document.getElementById("image");
+  loading = "/img/loading.png"; // TODO fix this to use a better gif
+  make_base(loading);
   fetch("/upload", {
     method: "POST",
     body: dataURL
@@ -314,13 +324,25 @@ function upload(canvas) {
     .then(response => response.json())
     .then(r => {
       let x = r.location;
-      let img = document.getElementById("image");
-      console.log("img", img.src);
-      img.src = "/" + x;
-      console.log(img.src);
+      //let img = document.getElementById("image");
+      //console.log("img", img.src);
+      source = "/" + x;
+      //console.log(img.src);
+
+      make_base(source);
     });
 }
 
+function make_base(myImage)
+{
+  var canvas = document.getElementById('drawing-board-canvas');
+  context = canvas.getContext('2d');
+  base_image = new Image();
+  base_image.src = myImage;
+  base_image.onload = function(){
+    context.drawImage(base_image, 0, 0, canvas.width, canvas.height);
+  }
+}
 // function eraser() {
 //   currentSize = 50;
 //   currentColor = ctx.fillStyle;
