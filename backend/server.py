@@ -94,6 +94,17 @@ def make_processable(greyscale_fname, output_color_file):
 
 
 class UploadHandler(tornado.web.RequestHandler):
+    
+    def set_default_headers(self):
+        print("setting headers!!!")
+          self.set_header("Access-Control-Allow-Origin", "*")
+          self.set_header("Access-Control-Allow-Methods", "GET,PUT,POST")
+          self.set_header("Access-Control-Allow-Headers",
+                            "Content-Type, Depth, User-Agent, X-File-Size, 
+                             X-Requested-With, X-Requested-By, 
+                             If-Modified-Since, X-File-Name, 
+                             Cache-Control")
+
     def post(self, name=None):
         # TODO Fix this with how we will be getting the file from the front end...
         # TODO change the way that we save the model?
@@ -127,8 +138,18 @@ class UploadHandler(tornado.web.RequestHandler):
             "location": static_image_location
         })
 
-
 class MainHandler(tornado.web.RequestHandler):
+
+    def set_default_headers(self):
+        print("setting headers!!!")
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Methods", "GET,PUT,POST")
+        self.set_header("Access-Control-Allow-Headers",
+                            "Content-Type, Depth, User-Agent, X-File-Size, 
+                             X-Requested-With, X-Requested-By, 
+                             If-Modified-Since, X-File-Name, 
+                             Cache-Control")
+
     def get(self, name=None):  # I *think* name is the sub endpoint?
         # NOTE - if you pass self.write a dictionary, it will automatically write out
         # JSON and set the content type to JSON
@@ -169,7 +190,7 @@ class MainApplication(tornado.web.Application):
             (r".*/static/(.*)", tornado.web.StaticFileHandler,
              {"path": STATIC_FOLDER})
         ])
-
+        
     def run(self):
         try:
             signal.signal(signal.SIGINT, self.signal_handler)
